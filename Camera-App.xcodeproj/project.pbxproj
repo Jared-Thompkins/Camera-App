@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD68840D2B0EBA5800A18A06 /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68840C2B0EBA5800A18A06 /* CaptureView.swift */; };
+		DD68840F2B0EBA8D00A18A06 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68840E2B0EBA8D00A18A06 /* CircleButton.swift */; };
 		DDA6BAB82B0EA1B900BBD725 /* Camera_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6BAB72B0EA1B900BBD725 /* Camera_AppApp.swift */; };
 		DDA6BABA2B0EA1B900BBD725 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6BAB92B0EA1B900BBD725 /* ContentView.swift */; };
 		DDA6BABC2B0EA1BD00BBD725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDA6BABB2B0EA1BD00BBD725 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD68840C2B0EBA5800A18A06 /* CaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
+		DD68840E2B0EBA8D00A18A06 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		DDA6BAB42B0EA1B900BBD725 /* Camera-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camera-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA6BAB72B0EA1B900BBD725 /* Camera_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera_AppApp.swift; sourceTree = "<group>"; };
 		DDA6BAB92B0EA1B900BBD725 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 			children = (
 				DDA6BAB72B0EA1B900BBD725 /* Camera_AppApp.swift */,
 				DDA6BAB92B0EA1B900BBD725 /* ContentView.swift */,
+				DD68840C2B0EBA5800A18A06 /* CaptureView.swift */,
+				DD68840E2B0EBA8D00A18A06 /* CircleButton.swift */,
 				DDA6BABB2B0EA1BD00BBD725 /* Assets.xcassets */,
 				DDA6BABD2B0EA1BD00BBD725 /* Preview Content */,
 			);
@@ -139,6 +145,8 @@
 			files = (
 				DDA6BABA2B0EA1B900BBD725 /* ContentView.swift in Sources */,
 				DDA6BAB82B0EA1B900BBD725 /* Camera_AppApp.swift in Sources */,
+				DD68840D2B0EBA5800A18A06 /* CaptureView.swift in Sources */,
+				DD68840F2B0EBA8D00A18A06 /* CircleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
