@@ -13,9 +13,9 @@ struct CircleButton: View {
             self.action()   // Quick tap
         }){
             Image(systemName: "circle.fill")
-                .font(.system(size: 60))
+                .font(.system(size: 75))
                 .foregroundColor(.white)
-                .padding(5.0)
+                .padding(3.5)
                 .background(Color.black)
                 .clipShape(Circle())
                 .onLongPressGesture(
