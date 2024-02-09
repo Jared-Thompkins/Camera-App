@@ -14,6 +14,7 @@
 		DDA6BABA2B0EA1B900BBD725 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6BAB92B0EA1B900BBD725 /* ContentView.swift */; };
 		DDA6BABC2B0EA1BD00BBD725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDA6BABB2B0EA1BD00BBD725 /* Assets.xcassets */; };
 		DDA6BABF2B0EA1BD00BBD725 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDA6BABE2B0EA1BD00BBD725 /* Preview Assets.xcassets */; };
+		DDFFC75C2B762BF8002E45C5 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFC75B2B762BF8002E45C5 /* CameraViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		DDA6BAB92B0EA1B900BBD725 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DDA6BABB2B0EA1BD00BBD725 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDA6BABE2B0EA1BD00BBD725 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DDFFC75B2B762BF8002E45C5 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				DD68840C2B0EBA5800A18A06 /* CaptureView.swift */,
 				DD68840E2B0EBA8D00A18A06 /* CircleButton.swift */,
 				DD6884112B0EE30C00A18A06 /* CameraManager.swift */,
+				DDFFC75B2B762BF8002E45C5 /* CameraViewModel.swift */,
 				DDA6BABB2B0EA1BD00BBD725 /* Assets.xcassets */,
 				DDA6BABD2B0EA1BD00BBD725 /* Preview Content */,
 			);
@@ -153,6 +156,7 @@
 				DD68840D2B0EBA5800A18A06 /* CaptureView.swift in Sources */,
 				DD68840F2B0EBA8D00A18A06 /* CircleButton.swift in Sources */,
 				DD6884122B0EE30C00A18A06 /* CameraManager.swift in Sources */,
+				DDFFC75C2B762BF8002E45C5 /* CameraViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var cameraViewModel = CameraViewModel()
+    
     var body: some View {
         VStack {
             Spacer()
-            CaptureView()
-                .padding(.bottom, 65)
+            if cameraViewModel.isCameraAuthorized {
+                CaptureView()
+                    .padding(.bottom, 65)
+            } else {
+                Text("Camera access is required.")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding()
+            }
         }
     }
 }

@@ -114,3 +114,19 @@ class CameraManager: NSObject {
         captureSession.commitConfiguration() // Commit changes
     }
 }
+
+extension CameraManager {
+    // Check & request camera permissions
+    func checkCameraPermissions(completion: @escaping (Bool) -> Void) {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized:
+            completion(true)
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                completion(granted)
+            }
+        default:
+            completion(false)
+        }
+    }
+}
