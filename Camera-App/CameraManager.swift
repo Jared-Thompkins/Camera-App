@@ -11,17 +11,18 @@
 import AVFoundation
 import UIKit
 
-class CameraManager: NSObject {
+class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AVCaptureFileOutputRecordingDelegate {
     var captureSession: AVCaptureSession?
     var currentCameraPosition: AVCaptureDevice.Position?
     var photoOutput: AVCapturePhotoOutput?
-    var videoOutput: AVCaptureVideoDataOutput?
+    var videoOutput: AVCaptureMovieFileOutput?
     var frontCamera: AVCaptureDevice?
     var rearCamera: AVCaptureDevice?
     
     override init() {
         super.init()
         self.captureSession = AVCaptureSession()
+        setupCamera()
     }
     
     func setupCamera() {
@@ -61,11 +62,47 @@ class CameraManager: NSObject {
         }
         
         // Video Output
-        let videoOutput = AVCaptureVideoDataOutput()
+        let videoOutput = AVCaptureMovieFileOutput()
         if captureSession?.canAddOutput(videoOutput) == true {
             captureSession?.addOutput(videoOutput)
             self.videoOutput = videoOutput
         }
+    }
+    
+    func capturePhoto() {
+        guard let photoOutput = self.photoOutput else { return }
+        
+        let photoSettings = AVCapturePhotoSettings()
+        photoOutput.capturePhoto(with: photoSettings, delegate: self)
+    }
+    
+    func startRecording() {
+        guard let videoOutput = self.videoOutput,
+              !videoOutput.isRecording,
+           //   let connection = videoOutput.connection(with: .video),
+              let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        
+        let outputPath = documentsPath.appendingPathComponent("\(UUID().uuidString).mov")
+        videoOutput.startRecording(to: outputPath, recordingDelegate: self)
+    }
+    
+    func photoOutput(_ output:AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?){
+        // Handle captured photo, e.g., save it or update UI
+        if let error = error {
+            print("Error capturing photo: \(error)")
+            return
+        }
+        
+        guard let imageData = photo.fileDataRepresentation() else {
+            print("Could not get image data.")
+            return
+        }
+        
+        let image = UIImage(data: imageData)
+    }
+    
+    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+        // Handle finished recording, e.g., save video URL or update UI
     }
     
     func startSession() {

@@ -5,13 +5,23 @@ import SwiftUI
 
 
 struct CaptureView: View {
+    @ObservedObject var cameraManager = CameraManager()
+    
     var body: some View {
-        CircleButton(action: {
-            // Handle photo capture
-        }, longPressAction: {
-            // Handle video capture start
-        }, releaseAction: {
-           // Handle video capture end
-        })
+        ZStack {
+            // Camera preview layer here
+            
+            CircleButton(action: {
+                // Handle photo capture
+            })
+            .onTapGesture {
+                cameraManager.capturePhoto()
+            }
+            .simultaneousGesture(LongPressGesture(minimumDuration: 0.5).onEnded { _ in
+                cameraManager.startRecording()
+            }.onChanged { _ in
+                cameraManager.startRecording()
+            })
+        }
     }
 }
