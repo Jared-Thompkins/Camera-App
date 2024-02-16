@@ -14,7 +14,7 @@ struct ContentView: View {
         VStack {
             Spacer()
             if cameraViewModel.isCameraAuthorized {
-                CaptureView()
+                CaptureView(cameraManager: cameraViewModel.cameraManager)
                     .padding(.bottom, 65)
             } else {
                 Text("Camera access is required.")

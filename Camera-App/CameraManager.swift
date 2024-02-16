@@ -86,6 +86,12 @@ class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, 
         videoOutput.startRecording(to: outputPath, recordingDelegate: self)
     }
     
+    func stopRecording() {
+        if let videoOutput = self.videoOutput, videoOutput.isRecording {
+            videoOutput.stopRecording()
+        }
+    }
+    
     func photoOutput(_ output:AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?){
         // Handle captured photo, e.g., save it or update UI
         if let error = error {
@@ -93,12 +99,12 @@ class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, 
             return
         }
         
-        guard let imageData = photo.fileDataRepresentation() else {
-            print("Could not get image data.")
-            return
-        }
-        
-        let image = UIImage(data: imageData)
+//        guard let imageData = photo.fileDataRepresentation() else {
+//            print("Could not get image data.")
+//            return
+//        }
+//
+//        let image = UIImage(data: imageData)
     }
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {

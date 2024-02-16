@@ -10,7 +10,7 @@ import AVFoundation
 
 class CameraViewModel: ObservableObject {
     @Published var isCameraAuthorized: Bool = false
-    private var cameraManager = CameraManager()
+    var cameraManager = CameraManager()
 
     init() {
         checkCameraPermissions()
