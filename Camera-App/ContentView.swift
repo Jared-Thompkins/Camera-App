@@ -1,9 +1,5 @@
 //
 //  ContentView.swift
-//  Camera-App
-//
-//  Created by Jared Thompkins on 11/22/23.
-//
 
 import SwiftUI
 

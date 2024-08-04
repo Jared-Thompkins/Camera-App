@@ -2,8 +2,6 @@
 //  CameraManager.swift
 //  Camera-App
 //
-//  Created by Jared Thompkins on 11/22/23.
-//
 //  CameraManager.swift is expected to handle the core functionality related to accessing and managing the camera. It should include methods for setting up the camera session, handling permissions, capturing photos, and recording videos. To meet requirements, it needs to support both photo capture with a single tap and video recording with a long press.
 //
 
@@ -12,6 +10,7 @@ import AVFoundation
 import UIKit
 
 class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AVCaptureFileOutputRecordingDelegate {
+    @Published var capturedImage: UIImage? = nil
     var captureSession: AVCaptureSession?
     var currentCameraPosition: AVCaptureDevice.Position?
     var photoOutput: AVCapturePhotoOutput?
@@ -31,6 +30,11 @@ class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, 
         captureSession.beginConfiguration()
         
         configureInputDevices()
+        
+        photoOutput = AVCapturePhotoOutput()
+        if let photoOutput = photoOutput, captureSession.canAddOutput(photoOutput) {
+            captureSession.addOutput(photoOutput)
+        }
         
         configureOutputs()
         
@@ -69,11 +73,22 @@ class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, 
         }
     }
     
+
+    
     func capturePhoto() {
-        guard let photoOutput = self.photoOutput else { return }
-        
-        let photoSettings = AVCapturePhotoSettings()
-        photoOutput.capturePhoto(with: photoSettings, delegate: self)
+        let settings = AVCapturePhotoSettings()
+        photoOutput?.capturePhoto(with: settings, delegate: self)
+    }
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard error == nil else {
+            print("Error capturing photo: \(String(describing: error))")
+            return
+        }
+        guard let imageData = photo.fileDataRepresentation() else {
+            print("Error converting photo to data")
+            return
+        }
+        self.capturedImage = UIImage(data: imageData)
     }
     
     func startRecording() {
@@ -90,21 +105,6 @@ class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, 
         if let videoOutput = self.videoOutput, videoOutput.isRecording {
             videoOutput.stopRecording()
         }
-    }
-    
-    func photoOutput(_ output:AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?){
-        // Handle captured photo, e.g., save it or update UI
-        if let error = error {
-            print("Error capturing photo: \(error)")
-            return
-        }
-        
-//        guard let imageData = photo.fileDataRepresentation() else {
-//            print("Could not get image data.")
-//            return
-//        }
-//
-//        let image = UIImage(data: imageData)
     }
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {

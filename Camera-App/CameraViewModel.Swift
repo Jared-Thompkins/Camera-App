@@ -1,9 +1,5 @@
 //
 //  CameraViewModel.swift
-//  Camera-App
-//
-//  Created by Jared Thompkins on 2/9/24.
-//
 
 import Foundation
 import AVFoundation

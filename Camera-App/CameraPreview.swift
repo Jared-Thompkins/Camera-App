@@ -1,9 +1,5 @@
 //
 //  CameraPreview.swift
-//  Camera-App
-//
-//  Created by Jared Thompkins on 2/15/24.
-//
 
 import SwiftUI
 import AVFoundation
